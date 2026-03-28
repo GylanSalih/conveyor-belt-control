@@ -1,0 +1,100 @@
+// SCSS Variablen
+$primary-color: #0070f3;
+$secondary-color: #ff6b6b;
+$text-dark: #333;
+$text-light: #666;
+$border-radius: 8px;
+$spacing-unit: 16px;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin card-style {
+  border-radius: $border-radius;
+  padding: $spacing-unit;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+}
+
+// Container
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: $spacing-unit * 2;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  color: $text-dark;
+}
+
+// Header
+.header {
+  text-align: center;
+  color: white;
+  margin-bottom: $spacing-unit * 3;
+  
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0 0 $spacing-unit 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin: 0;
+  }
+}
+
+// Main content
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $spacing-unit * 2;
+}
+
+// Card
+.card {
+  @include card-style;
+  background: white;
+  border-left: 4px solid $primary-color;
+  
+  h2 {
+    margin-top: 0;
+    color: $primary-color;
+    font-size: 1.5rem;
+  }
+  
+  p {
+    color: $text-light;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .container {
+    padding: $spacing-unit;
+  }
+  
+  .header .title {
+    font-size: 1.8rem;
+  }
+  
+  .main {
+    grid-template-columns: 1fr;
+  }
+}
